@@ -13,4 +13,7 @@ public interface TransactionMaintainenceService {
 	public List<TransactionChildEntity> retrieveInformationUsingTransactionId( String transactionId )throws Exception;
 	
 	public void deleteFromChildTableUsingId( String id )throws Exception;
+	
+	public void retrieveOldRecordUsingTransactionId( TransactionDTO.ChildTransactionDTO childTransactionDTO, 
+															String transactionId )throws Exception;
 }

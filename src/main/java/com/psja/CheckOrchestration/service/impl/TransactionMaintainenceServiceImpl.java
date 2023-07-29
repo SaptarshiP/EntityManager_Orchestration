@@ -97,5 +97,18 @@ public class TransactionMaintainenceServiceImpl implements TransactionMaintainen
 		prevalidateForDeleteFromChildTable( id );
 		persistForDeleteFromChildTable( id );
 	}
+	
+	@Override
+	public void retrieveOldRecordUsingTransactionId( TransactionDTO.ChildTransactionDTO childTransactionDTO, 
+														String transactionId )throws Exception {
+		TransactionParentEntity transactionParentEntity = transactionParentRepo.getByTransactionId( transactionId );
+		TransactionChildEntity transactionChildEntity = new TransactionChildEntity();
+		transactionChildEntity.setPurpose( childTransactionDTO.getPurpose() );
+		transactionChildEntity.setServiceName( childTransactionDTO.getServiceName() );
+		transactionChildEntity.setTransactionParentEntity(transactionParentEntity);
+		
+		transactionParentEntity.getTransactionChildEntityList().add( transactionChildEntity );
+		transactionParentRepo.merge( transactionParentEntity );
+	}
 
 }

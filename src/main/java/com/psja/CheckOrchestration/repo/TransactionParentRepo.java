@@ -15,4 +15,6 @@ public interface TransactionParentRepo {//extends JpaRepository<TransactionParen
 	public void save( TransactionParentEntity transactionParentEntity );
 	public List<Object[]> getByTransactionIdFromChildTable( String transactionId );
 	public void deleteByIdFromChildTable( String id );
+	public TransactionParentEntity getByTransactionId( String transactionId );
+	public void merge( TransactionParentEntity transactionParentEntity );
 }

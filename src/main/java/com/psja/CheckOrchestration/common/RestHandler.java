@@ -61,4 +61,20 @@ public class RestHandler {
 		System.out.println( "EXITING FROM GET DATA" );
 		return response.getBody();
 	}
+	
+	public String cancelUsingTransactionId( String url ) {
+		
+		System.out.println("INSERTING INTO cancelUsingTransactionId");
+		ResponseEntity<String> response = null;
+		try {
+			response = restTemplate.exchange( url, HttpMethod.GET, null, String.class );
+			
+		} catch( Exception exp ) {
+			throw new SystemException( exp, UNABLE_TO_CONNECT_EXTERNAL_SERVICE_ERROR_CODE,
+					UNABLE_TO_CONNECT_EXTERNAL_SERVICE_ERROR_MESSAGE );
+		}
+				
+		System.out.println("EXITING INTO cancelUsingTransactionId" );
+		return response.getBody();
+	}
 }

@@ -32,8 +32,8 @@ public class JsonUtility {
 		
 	}
 	
-	public Object readJsonString( String jsonData, Object obj ) throws JsonMappingException, JsonProcessingException {
-		return staticObjectMapper.readValue( jsonData, obj.getClass() );
+	public Object readJsonString( String jsonData, Class cls ) throws JsonMappingException, JsonProcessingException {
+		return staticObjectMapper.readValue( jsonData, cls );
 	}
 	
 }
